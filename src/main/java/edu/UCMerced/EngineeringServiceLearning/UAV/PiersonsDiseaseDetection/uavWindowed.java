@@ -1,4 +1,4 @@
-package edu.ucmerced.PDD;
+package edu.UCMerced.EngineeringServiceLearning.UAV.PiersonsDiseaseDetection;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -256,7 +256,6 @@ compound = BorderFactory.createCompoundBorder(
         //Main Menus clicked events
         s1.addMenuListener(new MenuListener() {
 
-            @Override
             public void menuSelected(MenuEvent e) {
                 //System.out.println("menuSelected");
                 
@@ -287,14 +286,12 @@ compound = BorderFactory.createCompoundBorder(
                 }
 
             }
-
-            @Override
             public void menuDeselected(MenuEvent e) {
                 //System.out.println("menuDeselected");
 
             }
 
-            @Override
+
             public void menuCanceled(MenuEvent e) {
                 //System.out.println("menuCanceled");
 
@@ -303,7 +300,7 @@ compound = BorderFactory.createCompoundBorder(
 
         s2.addMenuListener(new MenuListener() {
 
-            @Override
+
             public void menuSelected(MenuEvent e) {
                 //System.out.println("menuSelected");
 
@@ -315,13 +312,13 @@ compound = BorderFactory.createCompoundBorder(
                 uavWindowed.this.getContentPane().revalidate();
             }
 
-            @Override
+
             public void menuDeselected(MenuEvent e) {
                 //System.out.println("menuDeselected");
 
             }
 
-            @Override
+
             public void menuCanceled(MenuEvent e) {
                 //System.out.println("menuCanceled");
 
@@ -330,7 +327,7 @@ compound = BorderFactory.createCompoundBorder(
 
         s3.addMenuListener(new MenuListener() {
 
-            @Override
+
             public void menuSelected(MenuEvent e) {
                 //System.out.println("menuSelected");
 
@@ -342,13 +339,13 @@ compound = BorderFactory.createCompoundBorder(
                 uavWindowed.this.getContentPane().revalidate();
             }
 
-            @Override
+
             public void menuDeselected(MenuEvent e) {
                 //System.out.println("menuDeselected");
 
             }
 
-            @Override
+
             public void menuCanceled(MenuEvent e) {
                 //System.out.println("menuCanceled");
 
@@ -357,7 +354,7 @@ compound = BorderFactory.createCompoundBorder(
 
         s4.addMenuListener(new MenuListener() {
 
-            @Override
+
             public void menuSelected(MenuEvent e) {
                 //System.out.println("menuSelected");
 
@@ -370,13 +367,13 @@ compound = BorderFactory.createCompoundBorder(
 
             }
 
-            @Override
+
             public void menuDeselected(MenuEvent e) {
                 //System.out.println("menuDeselected");
 
             }
 
-            @Override
+
             public void menuCanceled(MenuEvent e) {
                 //System.out.println("menuCanceled");
 
@@ -385,7 +382,7 @@ compound = BorderFactory.createCompoundBorder(
 
         s5.addMenuListener(new MenuListener() {
 
-            @Override
+
             public void menuSelected(MenuEvent e) {
                 //System.out.println("menuSelected");
 
@@ -397,13 +394,13 @@ compound = BorderFactory.createCompoundBorder(
                 uavWindowed.this.getContentPane().revalidate();
             }
 
-            @Override
+
             public void menuDeselected(MenuEvent e) {
                 //System.out.println("menuDeselected");
 
             }
 
-            @Override
+
             public void menuCanceled(MenuEvent e) {
                 //System.out.println("menuCanceled");
 
