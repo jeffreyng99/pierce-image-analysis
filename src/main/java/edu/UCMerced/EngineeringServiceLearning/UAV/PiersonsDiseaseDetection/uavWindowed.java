@@ -470,7 +470,7 @@ compound = BorderFactory.createCompoundBorder(
         
          int fileCount=0;
          File dir1 = new File(".");
-        File folder = new File(dir1.getAbsolutePath()+"\\src\\Scripts\\Stitched Images\\");
+        File folder = new File(dir1.getAbsolutePath()+"\\sample\\Stitched Images\\");
         File[] listOfFiles = folder.listFiles();
         
          
