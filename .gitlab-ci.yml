@@ -1,1 +1,2 @@
-language: java
+bloop:
+  script: "mvn clean install"
