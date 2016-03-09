@@ -1,2 +1,4 @@
+before_script:
+  - "apt-get install mvn"
 bloop:
   script: "mvn clean install"
