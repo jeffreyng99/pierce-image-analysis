@@ -1096,9 +1096,11 @@ ImageIcon AnalyzedMap = new ImageIcon(FileOutLocation);
 
     public static void main(String[] args) throws IOException {
 
-        uavWindowed me = new uavWindowed();
-        me.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        me.setVisible(true);
+        uavWindowed me = new uavWindowed(); //Creates a "uavWindowed" object named "me"
+        me.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Sets the default closeOperation of "me" to exit when the close button is presed
+        me.setVisible(true); //makes the window visible.
+
+        //In other words, useless stuff. take code from uaveWindowed function that isn't GUI stuff.
 
         System.out.println("startAnalysis: " + me.startAnalysis);
         System.out.println("pathFile: " + me.pathFile);
