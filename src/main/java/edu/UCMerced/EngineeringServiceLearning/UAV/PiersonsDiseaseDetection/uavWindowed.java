@@ -69,7 +69,7 @@ public class uavWindowed extends JFrame {
     
      String FileInLocation="";
      String FileOutLocation;
-            
+
 
     //Creates all of our panels which hold the content on each page
     JPanel homePanel = new JPanel();
@@ -80,21 +80,21 @@ public class uavWindowed extends JFrame {
     JPanel step3 = new JPanel(new BorderLayout());
     JPanel step4 = new JPanel();
     JPanel step5 = new JPanel();
-    
+
     JPanel testPanel = new JPanel();
     JPanel imageMacro = new JPanel();
-  
+
     JPanel imagePanel = new JPanel();
     JPanel imagePanel2 = new JPanel();
-   
+
     JPanel stitchBackground = new JPanel();
        JPanel analyzeBackground = new JPanel();
-    
+
     JPanel leftPanel = new JPanel();
           JPanel largeView = new JPanel();
-          
+
           JLabel stitchedImg;
-          
+
 //           JPanel scrollPane = new JPanel();
 //           JScrollPane scrollFrame = new JScrollPane();
 
@@ -105,8 +105,8 @@ public class uavWindowed extends JFrame {
     JMenu s3 = new JMenu("Step 3");
     JMenu s4 = new JMenu("Step 4");
     JMenu s5 = new JMenu("Step 5");
-    
-    
+
+
      JPanel insideMacro = new JPanel();
 
     //Creates our text fields as a JLabel and JTextField which accepts text input and JLabel is an element which can be put into a JPanel.
@@ -115,34 +115,34 @@ public class uavWindowed extends JFrame {
 
     JLabel stitchJLabel2 = new JLabel();
     JTextField path2 = new JTextField();
-  
+
 
     JLabel scriptText = new JLabel();
-    
+
      JComboBox stitchedImageViewer;
       JComboBox analyzedImageViewer;
-     
+
      JScrollPane scroll = new JScrollPane();
-     
-      
-     
+
+
+
      JLabel stitchViewLabel;
        JLabel analyzedViewLabel;
     String badPercent;
     String channels;
     String totalPixels;
     String modifyCount;
-    
+
 //      JButton jButton1 = new JButton();
-//              
+//
 //                JLabel label = new JLabel("Label");
 //
 //    JScrollPane jScrollPane = new JScrollPane(label);
-    
-    
 
-   
-    
+
+
+
+
 
     ImageIcon home = new ImageIcon("Home.png");
     ImageIcon aboutUS = new ImageIcon("uavStart.png");
@@ -151,8 +151,8 @@ public class uavWindowed extends JFrame {
 
     JPanel aboutPage = new JPanel();
 
-    
-    //Boolean operators, checks if our menu has been clicked or not. 
+
+    //Boolean operators, checks if our menu has been clicked or not.
     boolean s1Check;
     boolean s2Check;
     boolean s3Check;
@@ -166,10 +166,10 @@ public class uavWindowed extends JFrame {
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
-        
+
        final Border blackline, raisedetched, loweredetched,
        raisedbevel, loweredbevel, empty, compound;
-       
+
        blackline = BorderFactory.createLineBorder(Color.black);
 raisedetched = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
 loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
@@ -179,20 +179,20 @@ empty = BorderFactory.createEmptyBorder();
 
 compound = BorderFactory.createCompoundBorder(
                           raisedbevel, loweredbevel);
-      
+
  //testPanel.setBorder(compound);
  imageMacro.setBorder(compound);
 
 
  insideMacro.setBorder(compound);
- 
+
  //largeView.setBorder(compound);
- 
+
 //  jScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 //    jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 //    jScrollPane.setViewportBorder(new LineBorder(Color.RED));
 //    jScrollPane.getViewport().add(jButton1, null);
- 
+
 
 
 
@@ -258,9 +258,9 @@ compound = BorderFactory.createCompoundBorder(
 
             public void menuSelected(MenuEvent e) {
                 //System.out.println("menuSelected");
-                
-                
-        
+
+
+
                 if (s1.getBackground() == GREEN) {
 
                 } else {
@@ -270,13 +270,13 @@ compound = BorderFactory.createCompoundBorder(
                 uavWindowed.this.getContentPane().removeAll();
                 uavWindowed.this.getContentPane().add(step1);
                 uavWindowed.this.getContentPane().revalidate();
-                
+
                 File dir1 = new File (".");
 
 
                 String command = "cmd /c start cmd.exe /K \"cd "+dir1.getAbsolutePath()+"\\src\\Scripts && Analysis";
                 //Start ""  "C:\
-                
+
                 String start="Start \"\"  \"";
 //String command = "cmd /c "+start+" \"cd "+dir1.getAbsolutePath()+"\\src\\Scripts && Analysis";
                 try {
@@ -412,101 +412,101 @@ compound = BorderFactory.createCompoundBorder(
         aboutPage.add(aboutP);
 
         JPanel input = new JPanel();
-        
+
         JPanel scriptTextLabel = new JPanel();
-        
+
         input.setLayout(new BoxLayout(input, BoxLayout.X_AXIS));
         insideMacro.setLayout(new BoxLayout(insideMacro, BoxLayout.Y_AXIS));
-        
+
         scriptText.setText("This script has now started an automated process. Please complete the remaining steps.");
         scriptText.setForeground(white);
-        
+
         scriptTextLabel.setBackground(new Color(72,120,120));
         scriptTextLabel.add(scriptText);
-       
+
         //step1.setBackground(new Color(72,120,120));
         step1.add(scriptTextLabel);
        // step1.add(scriptText);
-        
-        
 
-        
+
+
+
         step2.setLayout(new BoxLayout(step2, BoxLayout.Y_AXIS));
         step2.setBorder(raisedbevel);
-        
-         
-          
-          
-        
+
+
+
+
+
           testPanel.setLayout(new BoxLayout(testPanel, BoxLayout.X_AXIS));
-          
+
           imageMacro.setLayout(new BoxLayout(imageMacro, BoxLayout.Y_AXIS));
           leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
-          
-        
-          
-          
+
+
+
+
           imageMacro.setBackground(new Color(72,120,120));
            insideMacro.setBackground(new Color(99,166,166));
-         
+
             leftPanel.add(imageMacro, new BoxLayout(testPanel, BoxLayout.Y_AXIS));
-            
+
             imageMacro.setMaximumSize(new Dimension(1000, 1000));
-            
+
             largeView.setBackground(WHITE);
           testPanel.add(leftPanel);
           testPanel.add(largeView);
-         
+
         //step1.setBackground(RED);
         //stitchPath.add(path);
-        
-        
+
+
     JLabel result;
 
-   
 
-    
-        
-        
+
+
+
+
          int fileCount=0;
          File dir1 = new File(".");
         File folder = new File(dir1.getAbsolutePath()+"\\sample\\Stitched Images\\");
         File[] listOfFiles = folder.listFiles();
-        
-         
+
+
 
         for (int i = 0; i < listOfFiles.length; i++) {
             if (listOfFiles[i].isFile()) {
                // System.out.println("File " + listOfFiles[i].getName());
                 fileCount++;
 
-            } 
+            }
         }
-        
-        
-        
-       
+
+
+
+
         String []fileNames = new String[fileCount];
         for(int i = 0; i < fileCount; i++)
         {
             fileNames[i] = listOfFiles[i].getName();
         }
-      
-        
-        
+
+
+
 
         currentPattern = fileNames[0];
 
         //Set up the UI for selecting a pattern.
         JLabel patternLabel1 = new JLabel("Select your stitched image");
         JLabel patternLabel2 = new JLabel("select one from the list:");
-        
-        
+
+
         for(int i = 0; i < fileCount; i++)
         {
         System.out.println(fileNames[i]);
         }
-       
+
 
         JComboBox patternList = new JComboBox(fileNames);
         patternList.setEditable(true);
@@ -543,18 +543,18 @@ compound = BorderFactory.createCompoundBorder(
         add(resultPanel);
 
         //setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        
-        
-        
-        
-        
-        
-        
-        
-        
-         
+
+
+
+
+
+
+
+
+
+
          int fileCount1=0;
-        
+
         File folder1 = new File(dir1.getAbsolutePath()+"\\src\\Scripts\\Analyzed Images\\");
         File[] listOfFiles1 = folder1.listFiles();
 
