@@ -21,6 +21,7 @@ import org.opencv.highgui.*;
 import org.opencv.imgproc.Imgproc;
 
 import java.io.*;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.awt.Color;
@@ -1099,8 +1100,31 @@ ImageIcon AnalyzedMap = new ImageIcon(FileOutLocation);
         uavWindowed me = new uavWindowed(); //Creates a "uavWindowed" object named "me"
         me.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Sets the default closeOperation of "me" to exit when the close button is presed
         me.setVisible(true); //makes the window visible.
-
+        String inputFolder = "";
+        String outputFolder="";
         //In other words, useless stuff. take code from uaveWindowed function that isn't GUI stuff.
+        System.out.println("Enter the name of the folder in which the pictures are located");
+        Scanner input = new Scanner(System.in);
+        inputFolder = input.nextLine();
+        System.out.println("Please enter the name of the folder you want the analysis to be saved to");
+        outputFolder = input.nextLine();
+
+        /*
+        This tells the program to take the pictures from the folder and stitch them together
+
+        String command = "cmd /c start cmd.exe /K \"cd "+dir1.getAbsolutePath()+"\\src\\Scripts && Analysis";
+        Start ""  "C:\
+        String start="Start \"\"  \"";
+        String command = "cmd /c "+start+" \"cd "+dir1.getAbsolutePath()+"\\src\\Scripts && Analysis";
+        try {
+        Process child = Runtime.getRuntime().exec(command);
+        } catch (IOException ex) {
+        Logger.getLogger(uavWindowed.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        make command = inputFolder?
+        */
+
 
         System.out.println("startAnalysis: " + me.startAnalysis);
         System.out.println("pathFile: " + me.pathFile);
