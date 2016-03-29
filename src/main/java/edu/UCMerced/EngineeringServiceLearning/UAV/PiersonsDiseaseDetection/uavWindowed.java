@@ -1103,11 +1103,23 @@ ImageIcon AnalyzedMap = new ImageIcon(FileOutLocation);
         String inputFolder = "";
         String outputFolder="";
         //In other words, useless stuff. take code from uaveWindowed function that isn't GUI stuff.
-        System.out.println("Enter the name of the folder in which the pictures are located");
+        System.out.println("Enter the name of the folder in which the pictures are located");   //Prompting the user to input the name of the folder in which the pictures are located
         Scanner input = new Scanner(System.in);
-        inputFolder = input.nextLine();
-        System.out.println("Please enter the name of the folder you want the analysis to be saved to");
-        outputFolder = input.nextLine();
+        inputFolder = input.nextLine();     //Input the name of the folder containing the pictures
+        System.out.println("Please enter the name of the folder you want the analysis to be saved to");     //Prompting the user to input the name of the folder in which to save the analyzed images
+        outputFolder = input.nextLine();    //Input the name of the folder in which you want to save the analyzed images
+        System.out.println("Currently stitching images");
+        Process process = new ProcessBuilder(inputFolder);
+        InputStream is = process.getInputStream();
+        InputStreamReader isr = new InputStreamReader(is);
+        BufferedReader br = new BufferedReader(isr);
+        String line;
+
+        System.out.printf("Output of running %s is:", Arrays.toString(args));
+
+        while ((line = br.readLine()) != null) {
+            System.out.println(line);
+        }
 
         /*
         This tells the program to take the pictures from the folder and stitch them together
