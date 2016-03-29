@@ -1056,14 +1056,14 @@ ImageIcon AnalyzedMap = new ImageIcon(FileOutLocation);
         for (int i = 0; i < re_vin.rows(); i++) {
             for (int j = 0; j < re_vin.cols(); j++) {
                 double[] rgb_values = re_vin.get(i, j);
-                double[] yellowfy = {0, 255, 255};
-                double[] whiteify = {255, 255, 255};
+                double[] yellowfy = {0, 255, 255}; //RGB Values for the color yellow. Needed for coloring a pixel yellow
+                double[] whiteify = {255, 255, 255}; // RGB values for the color white. 
                 if (rgb_values[0] > 100 && rgb_values[1] > 100 && rgb_values[2] > 100) {
-                    re_vin.put(i, j, yellowfy);
+                    re_vin.put(i, j, yellowfy); // // pixel values under 100 are painted yellow for all three values (R,G,B)
                     modify_count++;
                 }
                 if (rgb_values[0] < 50 && rgb_values[1] < 50 && rgb_values[2] < 50) {
-                    re_vin.put(i, j, whiteify);
+                    re_vin.put(i, j, whiteify);  // pixel values under 50 are painted white for all three values (R,G,B)
                 }
             }
         }
