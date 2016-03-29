@@ -1097,9 +1097,6 @@ ImageIcon AnalyzedMap = new ImageIcon(FileOutLocation);
 
     public static void main(String[] args) throws IOException {
 
-        uavWindowed me = new uavWindowed(); //Creates a "uavWindowed" object named "me"
-        me.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Sets the default closeOperation of "me" to exit when the close button is presed
-        me.setVisible(true); //makes the window visible.
         String inputFolder = "";
         String outputFolder="";
         //In other words, useless stuff. take code from uaveWindowed function that isn't GUI stuff.
@@ -1118,8 +1115,8 @@ ImageIcon AnalyzedMap = new ImageIcon(FileOutLocation);
         writer.newLine();
         writer.write("<sourceImages>");
         //Writing the location of the images in the .spj file
-        File inputImages= new File(inputFolder);
-        File[] listOfFiles = folder.listFiles();
+        File inputImages = new File(inputFolder);
+        File[] listOfFiles = inputImages.listFiles();
             for (int i=0; i < listOfFiles.length; i++)
         {
             if (listOfFiles[i].isFile())
@@ -1128,19 +1125,20 @@ ImageIcon AnalyzedMap = new ImageIcon(FileOutLocation);
                 writer.write("<sourceImage filePath=\"" + inputFolder + listOfFiles[i].getName() + "\" />");
             }
         }
-        file.createNewFile();
+        writer.close();
 
-        Process process = new ProcessBuilder(inputFolder);
-        InputStream is = process.getInputStream();
-        InputStreamReader isr = new InputStreamReader(is);
-        BufferedReader br = new BufferedReader(isr);
-        String line;
 
-        System.out.printf("Output of running %s is:", Arrays.toString(args));
+//        Process process = new ProcessBuilder(inputFolder);
+//        InputStream is = process.getInputStream();
+//        InputStreamReader isr = new InputStreamReader(is);
+//        BufferedReader br = new BufferedReader(isr);
+//        String line;
 
-        while ((line = br.readLine()) != null) {
-            System.out.println(line);
-        }
+//        System.out.printf("Output of running %s is:", Arrays.toString(args));
+//
+//        while ((line = br.readLine()) != null) {
+//            System.out.println(line);
+//        }
 
         /*
         This tells the program to take the pictures from the folder and stitch them together
@@ -1159,8 +1157,8 @@ ImageIcon AnalyzedMap = new ImageIcon(FileOutLocation);
         */
 
 
-        System.out.println("startAnalysis: " + me.startAnalysis);
-        System.out.println("pathFile: " + me.pathFile);
+        //System.out.println("startAnalysis: " + me.startAnalysis);
+        //System.out.println("pathFile: " + me.pathFile);
 
     }
 
