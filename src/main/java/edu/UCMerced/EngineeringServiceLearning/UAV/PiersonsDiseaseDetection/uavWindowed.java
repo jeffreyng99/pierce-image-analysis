@@ -1106,10 +1106,10 @@ ImageIcon AnalyzedMap = new ImageIcon(FileOutLocation);
         System.out.println("Please enter the name of the folder you want the analysis to be saved to");     //Prompting the user to input the name of the folder in which to save the analyzed images
         outputFolder = input.nextLine();    //Input the name of the folder in which you want to save the analyzed images
         System.out.println("Currently stitching images");
-        File file = new File(inputFolder, "blah.spj");  //Creates a .spj file in memory
+        File file = new File("blah.spj");  //Creates a .spj file in memory
         BufferedWriter writer= new BufferedWriter(new FileWriter(file));
         //Writing inside the .spj file
-        writer.write("<?xml verison=\"1.0\" encoding =\"utf-8\"?>");
+        writer.write("<?xml version=\"1.0\" encoding =\"utf-8\"?>");
         writer.newLine();
         writer.write("<stitchProject version=\"2.0\" cameraMotion=\"automatic\">");
         writer.newLine();
@@ -1122,9 +1122,13 @@ ImageIcon AnalyzedMap = new ImageIcon(FileOutLocation);
             if (listOfFiles[i].isFile())
             {
                 writer.newLine();
-                writer.write("<sourceImage filePath=\"" + inputFolder + listOfFiles[i].getName() + "\" />");
+                writer.write("<sourceImage filePath=\"" + inputFolder + "\\" + listOfFiles[i].getName() + "\" />");
             }
         }
+        writer.newLine();
+        writer.write("</sourceImages>");
+        writer.newLine();
+        writer.write("</stitchProject>");
         writer.close();
 
 
