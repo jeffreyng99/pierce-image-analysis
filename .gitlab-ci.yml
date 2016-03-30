@@ -1,4 +1,4 @@
-before_script:
-  - "apt-get install mvn"
-bloop:
-  script: "mvn clean install"
+image: maven:3-jdk-7
+
+build:
+  script: "mvn install -B"
