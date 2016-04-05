@@ -1107,7 +1107,7 @@ ImageIcon AnalyzedMap = new ImageIcon(FileOutLocation);
         outputFolder = input.nextLine();    //Input the name of the folder in which you want to save the analyzed images
         System.out.println("Currently stitching images");
         File file = new File("blah.spj");  //Creates a .spj file in memory
-        BufferedWriter writer= new BufferedWriter(new FileWriter(file));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(file));
         //Writing inside the .spj file
         writer.write("<?xml version=\"1.0\" encoding =\"utf-8\"?>");
         writer.newLine();
