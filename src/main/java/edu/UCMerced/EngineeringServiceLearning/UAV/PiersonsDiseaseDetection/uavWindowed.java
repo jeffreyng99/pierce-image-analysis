@@ -1131,7 +1131,12 @@ ImageIcon AnalyzedMap = new ImageIcon(FileOutLocation);
         writer.write("</stitchProject>");
         writer.close();
 
+        Runtime rt = Runtime.getRuntime();
+        rt.exec("cmd.exe /c blah.spj"); //Opens ICE and then stitches the images listed in the .spj file. We would change this line if we were to stitch with another program
 
+
+        //Run NDVI function with the stitched image with outputFolder
+        
 //        Process process = new ProcessBuilder(inputFolder);
 //        InputStream is = process.getInputStream();
 //        InputStreamReader isr = new InputStreamReader(is);
