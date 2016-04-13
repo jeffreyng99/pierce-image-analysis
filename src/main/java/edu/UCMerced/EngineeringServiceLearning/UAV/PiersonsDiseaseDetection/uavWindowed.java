@@ -1095,10 +1095,11 @@ ImageIcon AnalyzedMap = new ImageIcon(FileOutLocation);
 
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
         String inputFolder = "";
         String outputFolder="";
+        String stitchedImage="";
         //In other words, useless stuff. take code from uaveWindowed function that isn't GUI stuff.
         System.out.println("Enter the name of the folder in which the pictures are located");   //Prompting the user to input the name of the folder in which the pictures are located
         Scanner input = new Scanner(System.in);
@@ -1117,7 +1118,7 @@ ImageIcon AnalyzedMap = new ImageIcon(FileOutLocation);
         //Writing the location of the images in the .spj file
         File inputImages = new File(inputFolder);
         File[] listOfFiles = inputImages.listFiles();
-            for (int i=0; i < listOfFiles.length; i++)
+        for (int i=0; i < listOfFiles.length; i++)
         {
             if (listOfFiles[i].isFile())
             {
@@ -1133,7 +1134,18 @@ ImageIcon AnalyzedMap = new ImageIcon(FileOutLocation);
 
         Runtime rt = Runtime.getRuntime();
         rt.exec("cmd.exe /c blah.spj"); //Opens ICE and then stitches the images listed in the .spj file. We would change this line if we were to stitch with another program
-
+        //This should open up ICE and wait for the user to start the actual stitching process. The user can press next for each step in ICE. ICE will save the stitched image
+        //under the name of the first image with a _stitch added to the end. It will also save this file in the documents folder by default.
+        String imageName= listOfFiles[0].getName();
+        imageName.indexOf()
+        stitchedImage="%userprofile%\\Documents"+"\\"+listOfFiles[0].getName()+"_stitch.jpg";
+        File documentsFolder = new File(stitchedImage);
+        File[] listofFilesDocuments = documentsFolder.listFiles();
+        while (!documentsFolder.exists())
+        {
+            Thread.sleep(3000);
+            System.out.println(stitchedImage);
+        }
 
         //Run NDVI function with the stitched image with outputFolder
         
