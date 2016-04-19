@@ -1,5 +1,6 @@
 package edu.UCMerced.EngineeringServiceLearning.UAV.PiersonsDiseaseDetection;
 
+import org.apache.commons.io.FilenameUtils;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import static java.awt.Color.GREEN;
@@ -1137,16 +1138,19 @@ ImageIcon AnalyzedMap = new ImageIcon(FileOutLocation);
         //This should open up ICE and wait for the user to start the actual stitching process. The user can press next for each step in ICE. ICE will save the stitched image
         //under the name of the first image with a _stitch added to the end. It will also save this file in the documents folder by default.
         String imageName= listOfFiles[0].getName();
-        imageName.indexOf()
-        stitchedImage="%userprofile%\\Documents"+"\\"+listOfFiles[0].getName()+"_stitch.jpg";
+        imageName = FilenameUtils.removeExtension(imageName);
+        String userprofile = System.getenv("userprofile");
+        stitchedImage= userprofile + "\\Documents"+"\\"+imageName+"_stitch.jpg";
         File documentsFolder = new File(stitchedImage);
+        File outputImages = new File(outputFolder);
         File[] listofFilesDocuments = documentsFolder.listFiles();
         while (!documentsFolder.exists())
         {
             Thread.sleep(3000);
             System.out.println(stitchedImage);
         }
-
+        System.out.println("Stitching Found");
+        documentsFolder.renameTo(new File(outputFolder+"\\"+imageName+"_stitch.jpg"));
         //Run NDVI function with the stitched image with outputFolder
         
 //        Process process = new ProcessBuilder(inputFolder);
