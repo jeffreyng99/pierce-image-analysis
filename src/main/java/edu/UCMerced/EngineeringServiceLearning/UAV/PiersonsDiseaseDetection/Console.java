@@ -11,7 +11,7 @@ import java.util.Scanner;
 /**
  * Created by Buraaq Alrawi on 9/13/2016.
  */
-public class GUITest1 {
+public class Console {
     public static void main(String[] args) throws IOException, InterruptedException {
 
         String inputFolder = "";
