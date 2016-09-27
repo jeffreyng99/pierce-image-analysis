@@ -8,7 +8,7 @@
     <artifactId>UAV.PiersonsDiseaseDetection</artifactId>
     <version>1.0</version>
     <build>
-        <finalName>PIA</finalName>
+        <finalName>IgnoreMe</finalName>
             <plugins>
                 <plugin>
                     <!-- Build an executable JAR -->
@@ -37,7 +37,7 @@
                         </execution>
                     </executions>
                     <configuration>
-                        <finalName>uber-${artifactId}-${version}</finalName>
+                        <finalName>PIA</finalName>
                     </configuration>
                 </plugin>
             </plugins>
