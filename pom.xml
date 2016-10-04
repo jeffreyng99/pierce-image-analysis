@@ -20,7 +20,7 @@
                             <manifest>
                                 <addClasspath>true</addClasspath>
                                 <classpathPrefix>lib/</classpathPrefix>
-                                <mainClass>edu.UCMerced.EngineeringServiceLearning.UAV.PiersonsDiseaseDetection.uavWindowed</mainClass>
+                                <mainClass>edu.UCMerced.EngineeringServiceLearning.UAV.PiersonsDiseaseDetection.Console</mainClass>
                             </manifest>
                         </archive>
                     </configuration>
