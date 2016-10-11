@@ -83,7 +83,7 @@ public class UAV_NDVI2 {
 				}
 			}
 
-			String imagepath_ndvi = new StringBuilder(imagepath).insert(imagepath.length()-4, "-ndvi").toString();
+			/*String imagepath_ndvi = new StringBuilder(imagepath).insert(imagepath.length()-4, "-ndvi").toString();
 			Highgui.imwrite(imagepath_ndvi, ndvi);
 			Contrib.applyColorMap(ndvi2, ndvi2, Contrib.COLORMAP_JET);
 			String imagepath_ndvi2 = new StringBuilder(imagepath).insert(imagepath.length()-4, "-ndvi2").toString();
@@ -91,8 +91,9 @@ public class UAV_NDVI2 {
 			String imagepath_out = new StringBuilder(imagepath).insert(imagepath.length()-4, "-yellow").toString();
 			Highgui.imwrite(imagepath_out, yellow_vin);
 			System.out.println("Done!");
+			*/
 
-		} catch (IOException e){
+		} catch (Exception e){
 			System.out.println("Error: Could not open path.");
 		}
 	}
