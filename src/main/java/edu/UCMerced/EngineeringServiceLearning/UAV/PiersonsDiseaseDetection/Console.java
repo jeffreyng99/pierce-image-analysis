@@ -18,12 +18,14 @@ public class Console {
         String outputFolder="";
         String stitchedImage="";
         //In other words, useless stuff. take code from uaveWindowed function that isn't GUI stuff.
-        System.out.println("Enter the name of the folder in which the pictures are located");   //Prompting the user to input the name of the folder in which the pictures are located
+        System.out.println("Enter the name of the folder in which the pictures are located.");   //Prompting the user to input the name of the folder in which the pictures are located
         Scanner input = new Scanner(System.in);
         inputFolder = input.nextLine();     //Input the name of the folder containing the pictures
         System.out.println("Please enter the name of the folder you want the analysis to be saved to");     //Prompting the user to input the name of the folder in which to save the analyzed images
         outputFolder = input.nextLine();    //Input the name of the folder in which you want to save the analyzed images
-        System.out.println("Currently stitching images");
+        System.out.println("Microsoft ICE will now open,"); //letting user know that the program used to stitch the images will open on its own
+        System.out.println("go through each step and click on 'Next', which can be found in the top right corner."); //Telling user to move through the the steps by clicking next in microsoft ICE
+        System.out.println("When in step 4 click on 'Export to disk', and then click save."); //Telling user to export the stitched image into the default folder
         File file = new File("blah.spj");  //Creates a .spj file in memory
         BufferedWriter writer = new BufferedWriter(new FileWriter(file));
         //Writing inside the .spj file
