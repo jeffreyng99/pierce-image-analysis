@@ -65,9 +65,9 @@ public class Console {
         while (!documentsFolder.exists())
         {
             Thread.sleep(3000);
-            System.out.println(stitchedImage);
         }
         System.out.println("Stitching Found");
+        rt.exec("cmd.exe /c Taskkill /IM ICE.exe /F"); //closes ICE
         documentsFolder.renameTo(new File(outputFolder+"\\"+imageName+"_stitch.jpg"));
         //Run NDVI function with the stitched image with outputFolder
 
