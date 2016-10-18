@@ -64,19 +64,22 @@ public class Console {
         File[] listofFilesDocuments = stitchedImageFile.listFiles();
         if (stitchedImageFile.exists())
             stitchedImageFile.delete();
+        File outputFile = new File(outputFolder+"\\"+imageName+"_stitch.jpg");
+        if (outputFile.exists())
+            outputFile.delete();
+        new File(outputFolder).mkdir();
         while (!stitchedImageFile.exists())
         {
             Thread.sleep(3000);
         }
-        Long initialSize = 0L;
-        while (initialSize < stitchedImageFile.length())
+
+
+        while (!stitchedImageFile.renameTo(outputFile))
         {
-            initialSize = stitchedImageFile.length();
             Thread.sleep(1000);
         }
-        System.out.println("Stitching Found");
+        System.out.println("Stitching Complete");
         rt.exec("cmd.exe /c Taskkill /IM ICE.exe /F"); //closes ICE
-        stitchedImageFile.renameTo(new File(outputFolder+"\\"+imageName+"_stitch.jpg"));
         //Run NDVI function with the stitched image with outputFolder
 
 //        Process process = new ProcessBuilder(inputFolder);
