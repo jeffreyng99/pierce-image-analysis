@@ -9,7 +9,7 @@ import java.io.*;
 
 public class UAV_NDVI2 {
 
-	public static void NDVIProcessing(String inputImagePath,boolean isRedFilter) {
+	public Mat NDVIProcessing(String inputImagePath,boolean isRedFilter) {
 
 		//System.loadLibrary( Core.NATIVE_LIBRARY_NAME );
 		System.out.println(System.getProperty("user.dir"));
@@ -19,6 +19,10 @@ public class UAV_NDVI2 {
 
 
 			inputImageMatrix = Highgui.imread(inputImagePath);
+
+		} catch (Exception e){
+			return null;
+		}
 
 			Mat gray_vin = new Mat();
 			Mat yellow_vin = new Mat();
@@ -82,7 +86,7 @@ public class UAV_NDVI2 {
 					}
 				}
 			}
-
+			return ndvi;
 			/*String imagepath_ndvi = new StringBuilder(imagepath).insert(imagepath.length()-4, "-ndvi").toString();
 			Highgui.imwrite(imagepath_ndvi, ndvi);
 			Contrib.applyColorMap(ndvi2, ndvi2, Contrib.COLORMAP_JET);
@@ -93,8 +97,6 @@ public class UAV_NDVI2 {
 			System.out.println("Done!");
 			*/
 
-		} catch (Exception e){
-			System.out.println("Error: Could not open path.");
-		}
+
 	}
 }

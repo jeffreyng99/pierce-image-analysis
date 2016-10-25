@@ -1,6 +1,8 @@
 package edu.UCMerced.EngineeringServiceLearning.UAV.PiersonsDiseaseDetection;
 
 import org.apache.commons.io.FilenameUtils;
+import org.opencv.core.Mat;
+import org.opencv.highgui.Highgui;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -81,6 +83,19 @@ public class Console {
         System.out.println("Stitching Complete");
         rt.exec("cmd.exe /c Taskkill /IM ICE.exe /F"); //closes ICE
         //Run NDVI function with the stitched image with outputFolder
+
+
+        UAV_NDVI2 ndviObject = new UAV_NDVI2();
+        Mat matObject2 = ndviObject.NDVIProcessing(outputFile.getPath(), true);
+        if (matObject2 == null)
+        {
+            System.out.println("Error finding stitched image");
+            return;
+        }
+        Highgui.imwrite(outputFolder, matObject2);
+
+
+
 
 //        Process process = new ProcessBuilder(inputFolder);
 //        InputStream is = process.getInputStream();
