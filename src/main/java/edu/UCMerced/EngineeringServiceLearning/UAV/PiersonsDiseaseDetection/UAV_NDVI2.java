@@ -11,7 +11,7 @@ public class UAV_NDVI2 {
 
 	public Mat NDVIProcessing(String inputImagePath,boolean isRedFilter) {
 
-		//System.loadLibrary( Core.NATIVE_LIBRARY_NAME );
+		System.loadLibrary(Core.NATIVE_LIBRARY_NAME); //this is needed to remove an unsatisfied link error
 		System.out.println(System.getProperty("user.dir"));
 		Mat inputImageMatrix;
 

@@ -1,6 +1,7 @@
 package edu.UCMerced.EngineeringServiceLearning.UAV.PiersonsDiseaseDetection;
 
 import org.apache.commons.io.FilenameUtils;
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
 
@@ -15,7 +16,7 @@ import java.util.Scanner;
  */
 public class Console {
     public static void main(String[] args) throws IOException, InterruptedException {
-
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME); //this is needed to remove an unsatisfied link error
         String inputFolder = "";
         String outputFolder="";
         String stitchedImage="";
