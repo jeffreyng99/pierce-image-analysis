@@ -15,7 +15,7 @@ import java.util.Scanner;
  * Created by Buraaq Alrawi on 9/13/2016.
  */
 public class Console {
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(Class[] args) throws IOException, InterruptedException {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME); //this is needed to remove an unsatisfied link error
         String inputFolder = "";
         String outputFolder="";
