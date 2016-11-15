@@ -48,17 +48,19 @@ public class UserInterface {
                 }
                 catch(IOException ex)
                 {
-                    //TODO: add error message
+                    JOptionPane.showMessageDialog(null,"Error,IOException");
+                    textPane1.setText(ex.getMessage());
                 }
                 catch (InterruptedException ex)
                 {
-
+                    textPane1.setText(ex.getMessage());
+                    JOptionPane.showMessageDialog(null,"Error,InterruptedException");
                 }
-
-
-
+                }
         });
+        
     }
+
 
     private String FilePicker(ActionEvent e) {
         JFileChooser fileChooser = new JFileChooser();
