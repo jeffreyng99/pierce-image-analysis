@@ -8,7 +8,7 @@
     <properties>
       <minimumSize width="350" height="50"/>
       <opaque value="false"/>
-      <preferredSize width="350" height="50"/>
+      <preferredSize width="350" height="500"/>
     </properties>
     <border type="bevel-raised"/>
     <children>
