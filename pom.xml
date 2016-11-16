@@ -16,6 +16,26 @@
     <build>
         <finalName>IgnoreMe</finalName>
             <plugins>
+                <!-- Required to compile IntelliJ-created GUI
+                http://stackoverflow.com/questions/19049253/intelij-idea-gui-designer-maven -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>ideauidesigner-maven-plugin</artifactId>
+                    <version>1.0-beta-1</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>javac2</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+
+                    <configuration>
+                        <fork>true</fork>
+                        <debug>true</debug>
+                        <failOnError>true</failOnError>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <!-- Build an executable JAR -->
                     <groupId>org.apache.maven.plugins</groupId>
@@ -60,6 +80,12 @@
             <artifactId>commons-io</artifactId>
             <version>2.1</version>
             <type>jar</type>
+        </dependency>
+        <!-- http://stackoverflow.com/questions/19049253/intelij-idea-gui-designer-maven -->
+        <dependency>
+            <groupId>com.intellij</groupId>
+            <artifactId>forms_rt</artifactId>
+            <version>7.0.3</version>
         </dependency>
     </dependencies>
 
