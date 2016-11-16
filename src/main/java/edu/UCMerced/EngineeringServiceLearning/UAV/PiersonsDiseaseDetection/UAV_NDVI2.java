@@ -64,14 +64,14 @@ public class UAV_NDVI2 {
 					double blue_ndvi = -255*calc_ndvi;
 					double green_ndvi = 0;
 					double red_ndvi = 255*calc_ndvi;
-					if(calc_ndvi == 0){
+					if(calc_ndvi == 0){      //conditon true if green_ndvi = 225 
 						green_ndvi = 255;
 					}
 					else if(calc_ndvi < 0){
-						green_ndvi = 255*(1+calc_ndvi);//positive value 
+						green_ndvi = 255*(1+calc_ndvi);   //positive value 
 					}
 					else if(calc_ndvi > 0){
-						green_ndvi = 255*(1-calc_ndvi);//negative value 
+						green_ndvi = 255*(1-calc_ndvi);   //negative value 
 					}
 					double[] out_ndvi = {blue_ndvi, red_ndvi, green_ndvi};      //original blue green red
 					//double[] out_ndvi = {green, red, nir};
