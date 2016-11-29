@@ -28,19 +28,17 @@ public class UserInterface {
 
     public UserInterface() {
         OpenFileButton.addActionListener(new ActionListener() {
-            @Override
+
             public void actionPerformed(ActionEvent e) {
                 InputFile1.setText(FilePicker(e));
             }
         });
         OutputFileButton.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 OutputFile1.setText(FileOutput(e));
             }
         });
         Analyze.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) { textPane1.setText("Analyzing");
                 try
                 {
@@ -64,6 +62,7 @@ public class UserInterface {
     private String FilePicker(ActionEvent e) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        System.setProperty("java.library.path", "/opencv/build/java/x64");
         int returnValue = fileChooser.showDialog(null, "Choose Input Folder");
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             return fileChooser.getSelectedFile().getPath();
@@ -209,9 +208,5 @@ public class UserInterface {
         //System.out.println("pathFile: " + me.pathFile);
 
     }
-
-
-
-
 
 }
