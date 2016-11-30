@@ -98,9 +98,6 @@ public class UserInterface {
         String Instruct = "Hello";
         String stitchedImage="";
         //In other words, useless stuff. take code from uaveWindowed function that isn't GUI stuff.
-        Scanner input = new Scanner(System.in);
-        inputFolder = input.nextLine();     //Input the name of the folder containing the pictures
-        outputFolder = input.nextLine();    //Input the name of the folder in which you want to save the analyzed images
         SetText("Microsoft ICE will now open, \n" +
                 "go through each step and click on 'Next', which can be found in the top right corner. \n" +
                 "When in step 4 click on 'Export to disk', and then click save." ); //letting user know that the program used to stitch the images will open on its own
