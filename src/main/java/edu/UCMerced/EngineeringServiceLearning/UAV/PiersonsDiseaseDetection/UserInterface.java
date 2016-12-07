@@ -6,13 +6,11 @@ import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
+import java.io.*;
+import java.util.Set;
 
 /**
  * Created by Buraaq Alrawi on 10/11/2016.
@@ -38,25 +36,37 @@ public class UserInterface {
                 OutputFile1.setText(FileOutput(e));
             }
         });
+
         Analyze.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) { textPane1.setText("Analyzing");
-                try
-                {
-                    console(InputFile1.getText(), OutputFile1.getText());
+            public void actionPerformed(ActionEvent e) {
+                if (InputFile1.getText().isEmpty() || OutputFile1.getText().isEmpty()) {
+                    textPane1.setText("Pick folders, human.");
+                    return;
                 }
-                catch(IOException ex)
-                {
-                    JOptionPane.showMessageDialog(null,"Error,IOException");
-                    textPane1.setText(ex.getMessage());
+                    new Thread()
+                    {
+                        public void run()
+                        {
+                            try
+                            {
+                                thisDoesPrettyMuchEverything(InputFile1.getText(), OutputFile1.getText());
+                            }
+                            catch(IOException ex)
+                            {
+                                JOptionPane.showMessageDialog(null,"Error,IOException");
+                                textPane1.setText(ex.getMessage());
+                            }
+                            catch (InterruptedException ex)
+                            {
+                                textPane1.setText(ex.getMessage());
+                                JOptionPane.showMessageDialog(null,"Error,InterruptedException");
+                            }
+
+                        }
+                    }.start();
+
                 }
-                catch (InterruptedException ex)
-                {
-                    textPane1.setText(ex.getMessage());
-                    JOptionPane.showMessageDialog(null,"Error,InterruptedException");
-                }
-                }
-        });
-    }
+            });}
 
 
     private String FilePicker(ActionEvent e) {
@@ -92,9 +102,52 @@ public class UserInterface {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        try
+        {
+            String fullPath = ExportResource("/opencv_java2411.dll");
+            System.load(fullPath);
+        }
+        catch (Exception e)
+        {
+
+        }
     }
-    public void console(String inputFolder,String outputFolder) throws IOException, InterruptedException {
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME); //this is needed to remove an unsatisfied link error
+
+    /**
+     * Export a resource embedded into a Jar file to the local file path.
+     *
+     * @param resourceName ie.: "/SmartLibrary.dll"
+     * @return The path to the exported resource
+     * @throws Exception
+     */
+    static public String ExportResource(String resourceName) throws Exception {
+        InputStream stream = null;
+        OutputStream resStreamOut = null;
+        String jarFolder;
+        try {
+            stream = UserInterface.class.getResourceAsStream(resourceName);//note that each / is a directory down in the "jar tree" been the jar the root of the tree
+            if(stream == null) {
+                throw new Exception("Cannot get resource \"" + resourceName + "\" from Jar file.");
+            }
+
+            int readBytes;
+            byte[] buffer = new byte[4096];
+            jarFolder = new File(UserInterface.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath()).getParentFile().getPath().replace('\\', '/');
+            resStreamOut = new FileOutputStream(jarFolder + resourceName);
+            while ((readBytes = stream.read(buffer)) > 0) {
+                resStreamOut.write(buffer, 0, readBytes);
+            }
+        } catch (Exception ex) {
+            throw ex;
+        } finally {
+            stream.close();
+            resStreamOut.close();
+        }
+
+        return jarFolder + resourceName;
+    }
+
+    public void thisDoesPrettyMuchEverything(String inputFolder, String outputFolder) throws IOException, InterruptedException {
         String Instruct = "Hello";
         String stitchedImage="";
         //In other words, useless stuff. take code from uaveWindowed function that isn't GUI stuff.
@@ -155,7 +208,7 @@ public class UserInterface {
         {
             Thread.sleep(1000);
         }
-        System.out.println("Stitching Complete");
+        SetText("Stitching Complete, now running NDVI algorithm");
         rt.exec("cmd.exe /c Taskkill /IM ICE.exe /F"); //closes ICE
         //Run NDVI function with the stitched image with outputFolder
 
@@ -164,45 +217,16 @@ public class UserInterface {
         Mat matObject2 = ndviObject.NDVIProcessing(outputFile.getPath(), true);
         if (matObject2 == null)
         {
-            System.out.println("Error finding stitched image");
+            SetText("Error finding stitched image");
             return;
         }
-        Highgui.imwrite(outputFolder, matObject2);
+        Highgui.imwrite(outputFolder, matObject2);//See Gitlab issue tracker
+        SetText("Done. You can find the image in " + outputFolder);
 
 
 
 
-//        Process process = new ProcessBuilder(inputFolder);
-//        InputStream is = process.getInputStream();
-//        InputStreamReader isr = new InputStreamReader(is);
-//        BufferedReader br = new BufferedReader(isr);
-//        String line;
 
-//        System.out.printf("Output of running %s is:", Arrays.toString(args));
-//
-//        while ((line = br.readLine()) != null) {
-//            System.out.println(line);
-//        }
-
-        /*
-        This tells the program to take the pictures from the folder and stitch them together
-
-        String command = "cmd /c start cmd.exe /K \"cd "+dir1.getAbsolutePath()+"\\src\\Scripts && Analysis";
-        Start ""  "C:\
-        String start="Start \"\"  \"";
-        String command = "cmd /c "+start+" \"cd "+dir1.getAbsolutePath()+"\\src\\Scripts && Analysis";
-        try {
-        Process child = Runtime.getRuntime().exec(command);
-        } catch (IOException ex) {
-        Logger.getLogger(uavWindowed.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        make command = inputFolder?
-        */
-
-
-        //System.out.println("startAnalysis: " + me.startAnalysis);
-        //System.out.println("pathFile: " + me.pathFile);
 
     }
 
