@@ -1,5 +1,5 @@
 # Finding the code
-It's in the src folder; currently named Console.java
+It's in the src folder; currently named Console.java (yea what a wonderfully-named class right)
 
 # To compile (build a .jar)
 1. Install [maven](http://www.mkyong.com/maven/how-to-install-maven-in-windows/) (Yes it's somewhat of a pain since it doesn't set itself up in the PATH properly, so you'll have to do that yourself. The linked instructions should make this easy though.)
@@ -10,6 +10,6 @@ FYI: A copy of maven has already been downloaded in this repository (the maven3 
 
 # Running the jar
 1. Go to the "target" folder, hold shift and right-click, and click "Open command window here."
-2. Type java -jar PIA.jar
+2. Type `java -jar isnap.jar`
 
 Note: you can tab-complete file and folder names.
