@@ -57,7 +57,7 @@
                         </execution>
                     </executions>
                     <configuration>
-                        <finalName>PIA</finalName>
+                        <finalName>isnap</finalName>
                     </configuration>
                 </plugin>
             </plugins>
