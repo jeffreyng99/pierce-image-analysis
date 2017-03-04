@@ -220,7 +220,7 @@ public class UserInterface {
             SetText("Error finding stitched image");
             return;
         }
-        Highgui.imwrite(outputFolder+ "\\" + imageName +"_stitch.jpg", matObject2);//See Gitlab issue tracker
+        Highgui.imwrite(outputFolder, matObject2);//See Gitlab issue tracker
         SetText("Done. You can find the image in " + outputFolder);
 
 
