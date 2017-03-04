@@ -215,6 +215,8 @@ public class UserInterface {
 
         UAV_NDVI2 ndviObject = new UAV_NDVI2();
         Mat matObject2 = ndviObject.NDVIProcessing(outputFile.getPath(), true);
+        if (true)
+            SetText("hello");
         if (matObject2 == null)
         {
             SetText("Error finding stitched image");
