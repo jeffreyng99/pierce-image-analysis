@@ -217,7 +217,7 @@ public class UserInterface {
         
         SetText("hello0");
         
-        Mat matObject2 = ndviObject.NDVIProcessing(outputFile.getPath(), true);
+        Mat matObject2 = ndviObject.NDVIProcessing(outputFile.getPath(), true); //error here
         
         SetText("hello1");
         
