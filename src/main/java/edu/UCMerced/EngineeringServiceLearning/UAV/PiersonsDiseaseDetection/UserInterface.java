@@ -214,13 +214,20 @@ public class UserInterface {
 
 
         UAV_NDVI2 ndviObject = new UAV_NDVI2();
+        
+        SetText("hello0");
+        
         Mat matObject2 = ndviObject.NDVIProcessing(outputFile.getPath(), true);
+        
+        SetText("hello1");
         
         if (matObject2 == null)
         {
             SetText("Error finding stitched image");
             return;
         }
+        
+        SetText("hello2");
         
         Highgui.imwrite(outputFolder, matObject2);//See Gitlab issue tracker
         SetText("Done. You can find the image in " + outputFolder);
