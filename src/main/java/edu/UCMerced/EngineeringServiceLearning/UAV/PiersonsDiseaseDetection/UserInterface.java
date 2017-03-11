@@ -215,7 +215,7 @@ public class UserInterface {
 
         UAV_NDVI2 ndviObject = new UAV_NDVI2();
         
-          try {
+         
 	        Mat matObject2 = ndviObject.NDVIProcessing(outputFile.getPath(), true); // error here
 	        
 	        if (matObject2 == null)
@@ -225,9 +225,7 @@ public class UserInterface {
 	        }
 	        Highgui.imwrite(outputFolder, matObject2);//See Gitlab issue tracker
 	        SetText("Done. You can find the image in " + outputFolder);
-        } catch(Exception e) {
-        	SetText(e.getMessage());
-        }
+     
 
 
 
