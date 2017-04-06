@@ -217,6 +217,7 @@ public class UserInterface {
         
          
 	        Mat matObject2 = ndviObject.NDVIProcessing(outputFile.getPath(), true); // error here
+	           SetText("NDVI algorithm!");
 	        
 	        if (matObject2 == null)
 	        {
