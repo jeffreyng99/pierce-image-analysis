@@ -24,21 +24,21 @@ public class UAV_NDVI2 {
 			return null;
 		}
 
-			Mat gray_vin = new Mat();
-			Mat yellow_vin = new Mat();
+			Mat gray_vin = new Mat();                           //Creates a matrix
+			Mat yellow_vin = new Mat();                         //Creates a matrix
 			Imgproc.cvtColor(inputImageMatrix, gray_vin, Imgproc.COLOR_RGB2GRAY);
 			Imgproc.cvtColor(gray_vin, yellow_vin, Imgproc.COLOR_GRAY2RGB);
 
-			Mat ndvi = new Mat();
-			ndvi = inputImageMatrix;
-			Mat ndvi2 = new Mat();
+			Mat ndvi = new Mat();                                //Creates a matrix
+			ndvi = inputImageMatrix;                             //Names ndvi as inputImageMatrix
+			Mat ndvi2 = new Mat();                               //Creates a matrix
 			Imgproc.cvtColor(inputImageMatrix, ndvi2, Imgproc.COLOR_RGB2GRAY);
-			for(int i=0; i<ndvi.rows(); i++){ //loops through each pixel
-				for(int j=0; j<ndvi.cols(); j++){
+			for(int i=0; i<ndvi.rows(); i++){                    //loops through each pixel
+				for(int j=0; j<ndvi.cols(); j++){                //loops through each pixel
 					double[] bands = inputImageMatrix.get(i, j); //returns the value of blue, green & red for each index respectively
-					double blue = bands[0];
-					double green = bands[1];
-					double red = bands[2];
+					double blue = bands[0];                      //double is the data type of variable, it takes values that have large decimals
+					double green = bands[1];                     //blue, green, red, nir, calc_ndvi and thresh are the names of the of the variables
+					double red = bands[2];                       //bands[],0, and imputImageMatrix.get => are the values of the variables repectively
 					double nir = 0;
 					double calc_ndvi = 0;
 					double thresh = 0;
