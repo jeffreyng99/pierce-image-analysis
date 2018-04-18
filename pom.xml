@@ -7,8 +7,16 @@
     <groupId>edu.UCMerced.EngineeringServiceLearning</groupId>
     <artifactId>UAV.PiersonsDiseaseDetection</artifactId>
     <version>1.0</version>
+    <!-- opencv jar hosted on a maven repo since it's apparently it isn't easy to shade a system/local dependency-->
+    <repositories>
+        <repository>
+            <id>robomwm-repo</id>
+            <url>https://dl.bintray.com/robomwm/maven</url>
+        </repository>
+    </repositories>
     <build>
-        <finalName>IgnoreMe</finalName>
+        <!-- Name of _unshaded_ jar (i.e. the jar to not use/ignore). See finalName tag specified in maven-shade-plugin -->
+        <finalName>IgnoreThis</finalName>
             <plugins>
                 <!-- Required to compile IntelliJ-created GUI
                 http://stackoverflow.com/questions/19049253/intelij-idea-gui-designer-maven -->
@@ -57,32 +65,11 @@
                         </execution>
                     </executions>
                     <configuration>
+                        <!-- Final name of jar specified here, since unshaded variant can't be deleted, only renamed automatically -->
                         <finalName>isnap</finalName>
+                        <createDependencyReducedPom>false</createDependencyReducedPom> 
                     </configuration>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-install-plugin</artifactId>
-                    <version>2.5.2</version>
-                    <executions>
-                        <execution>
-                            <id>install-external</id>
-                            <phase>clean</phase>
-                            <configuration>
-                                <file>${basedir}/lib/opencv-2411.jar</file>
-                                <repositoryLayout>default</repositoryLayout>
-                                <groupId>org.opencv</groupId>
-                                <artifactId>opencv</artifactId>
-                                <version>2.4.11</version>
-                                <packaging>jar</packaging>
-                                <generatePom>true</generatePom>
-                            </configuration>
-                            <goals>
-                                <goal>install-file</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    </plugin>
             </plugins>
     </build>
     <dependencies>
