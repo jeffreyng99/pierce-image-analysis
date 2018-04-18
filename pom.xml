@@ -60,29 +60,29 @@
                         <finalName>isnap</finalName>
                     </configuration>
                 </plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-install-plugin</artifactId>
-					<version>2.5.2</version>
-					<executions>
-						<execution>
-							<id>install-external</id>
-							<phase>clean</phase>
-							<configuration>
-								<file>${basedir}/lib/opencv-2411.jar</file>
-								<repositoryLayout>default</repositoryLayout>
-								<groupId>org.opencv</groupId>
-								<artifactId>opencv</artifactId>
-								<version>2.4.11</version>
-								<packaging>jar</packaging>
-								<generatePom>true</generatePom>
-							</configuration>
-							<goals>
-								<goal>install-file</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>2.5.2</version>
+                    <executions>
+                        <execution>
+                            <id>install-external</id>
+                            <phase>clean</phase>
+                            <configuration>
+                                <file>${basedir}/lib/opencv-2411.jar</file>
+                                <repositoryLayout>default</repositoryLayout>
+                                <groupId>org.opencv</groupId>
+                                <artifactId>opencv</artifactId>
+                                <version>2.4.11</version>
+                                <packaging>jar</packaging>
+                                <generatePom>true</generatePom>
+                            </configuration>
+                            <goals>
+                                <goal>install-file</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    </plugin>
             </plugins>
     </build>
     <dependencies>
