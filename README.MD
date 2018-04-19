@@ -25,4 +25,4 @@ Note: you can tab-complete file and folder names.
 
 # Other documentation
 
-A PowerPoint exists somewhere in the box, but given the small amount of code, there really shouldn't be a need for more than in-code comments. If you're having trouble understanding the methods of Java-included classes, please refer to the Javadocs (which you can easily find via doing a web search for "classname Javadoc", e.g. `File Javadoc`).
+A PowerPoint exists somewhere in the box, but given the small amount of code, there really shouldn't be a need for more than in-code comments. If you're having trouble understanding the methods of Java-included classes, please refer to the Javadocs (e.g. here's how to get the javadoc for [File](http://lmgtfy.com/?s=b&q=file+javadoc))
