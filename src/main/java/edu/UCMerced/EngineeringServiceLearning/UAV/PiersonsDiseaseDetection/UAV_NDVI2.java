@@ -10,11 +10,19 @@ import java.io.*;
 public class UAV_NDVI2 {
 
 	public Mat NDVIProcessing(String inputImagePath,boolean isRedFilter) {
-
-		System.loadLibrary(Core.NATIVE_LIBRARY_NAME); //this is needed to remove an unsatisfied link error
+		System.out.println("NDVI Debug 1");
+		 //this is needed to remove an unsatisfied link error
+		try{
+			static{ System.loadLibrary("Core.NATIVE_LIBRARY_NAME"); }
+		} catch (Exception e){
+			System.out.println("Into the catch");
+			return null;
+		}
+		System.out.println("NDVI Debug 2");
 		System.out.println(System.getProperty("user.dir"));
+		System.out.println("NDVI Debug 3");
 		Mat inputImageMatrix;
-
+		System.out.println("NDVI Debug 4");
 		try{
 
 
