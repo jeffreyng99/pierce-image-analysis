@@ -13,22 +13,30 @@ public class UAV_NDVI2 {
 		System.out.println("NDVI Debug 1");
 		 //this is needed to remove an unsatisfied link error
 		try{
-			static{ System.loadLibrary("Core.NATIVE_LIBRARY_NAME"); }
+			System.out.println(System.getProperty("java.library.path"));
+			System.setProperty("java.library.path", "C:/Users/Jeffrey Ng/Desktop/Pierce-Image-Analysis/target");
+			System.out.println("Shit on this");
+			System.out.println(System.getProperty("java.library.path"));
+			System.loadLibrary("opencv_java2411");
 		} catch (Exception e){
 			System.out.println("Into the catch");
 			return null;
 		}
 		System.out.println("NDVI Debug 2");
 		System.out.println(System.getProperty("user.dir"));
+		String dir = System.getProperty("user.dir");
+		dir = dir.replace('\\', '/');
+		System.out.println(dir);
 		System.out.println("NDVI Debug 3");
 		Mat inputImageMatrix;
 		System.out.println("NDVI Debug 4");
 		try{
 
-
+			System.out.println("It went inside the try");
 			inputImageMatrix = Highgui.imread(inputImagePath);
 
 		} catch (Exception e){
+			System.out.println("The exception was caught!!");
 			return null;
 		}
 

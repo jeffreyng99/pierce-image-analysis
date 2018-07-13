@@ -182,6 +182,7 @@ public class UserInterface {
         //under the name of the first image with a _stitch added to the end. It will also save this file in the documents folder by default.
         String imageName = listOfFiles[0].getName();
         imageName = FilenameUtils.removeExtension(imageName);
+        String userprofile = System.getenv("userprofile");
         stitchedImage = userprofile + "\\Documents"+"\\"+imageName+"_stitch.jpg";
         File stitchedImageFile = new File(stitchedImage);
         File outputImages = new File(outputFolder);
@@ -224,7 +225,7 @@ public class UserInterface {
 	            SetText("Error finding stitched image");
 	            return;
 	        }
-	        Highgui.imwrite(outputFolder, matObject2);//See Gitlab issue tracker
+	        Highgui.imwrite(stitchedImage, matObject2);//See Gitlab issue tracker
 	        SetText("Done. You can find the image in " + outputFolder);
      
 
