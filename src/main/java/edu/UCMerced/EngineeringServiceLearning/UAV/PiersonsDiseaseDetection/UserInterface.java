@@ -26,7 +26,6 @@ public class UserInterface {
 
     public UserInterface() {
         OpenFileButton.addActionListener(new ActionListener() {
-
             public void actionPerformed(ActionEvent e) {
                 InputFile1.setText(FilePicker(e));
             }
@@ -159,11 +158,9 @@ public class UserInterface {
         File file = new File("blah.spj");  //Creates a .spj file in memory
         BufferedWriter writer = new BufferedWriter(new FileWriter(file));
         //Writing inside the .spj file
-        writer.write("<?xml version=\"1.0\" encoding =\"utf-8\"?>");
-        writer.newLine();
-        writer.write("<stitchProject version=\"2.0\" cameraMotion=\"automatic\">");
-        writer.newLine();
-        writer.write("<sourceImages>");
+        writer.write("<?xml version=\"1.0\" encoding =\"utf-8\"?>"); writer.newLine();
+        writer.write("<stitchProject version=\"2.0\" cameraMotion=\"automatic\">"); writer.newLine();
+        writer.write("<sourceImages>"); writer.newLine();
         //Writing the location of the images in the .spj file
         File inputImages = new File(inputFolder);
         File[] listOfFiles = inputImages.listFiles();
@@ -171,13 +168,10 @@ public class UserInterface {
         {
             if (listOfFiles[i].isFile())
             {
-                writer.newLine();
-                writer.write("<sourceImage filePath=\"" + inputFolder + "\\" + listOfFiles[i].getName() + "\" />");
+                writer.write("<sourceImage filePath=\"" + inputFolder + "\\" + listOfFiles[i].getName() + "\" />"); writer.newLine();
             }
         }
-        writer.newLine();
-        writer.write("</sourceImages>");
-        writer.newLine();
+        writer.write("</sourceImages>"); writer.newLine();
         writer.write("</stitchProject>");
         writer.close();
 
@@ -185,10 +179,10 @@ public class UserInterface {
         rt.exec("cmd.exe /c blah.spj"); //Opens ICE and then stitches the images listed in the .spj file. We would change this line if we were to stitch with another program
         //This should open up ICE and wait for the user to start the actual stitching process. The user can press next for each step in ICE. ICE will save the stitched image
         //under the name of the first image with a _stitch added to the end. It will also save this file in the documents folder by default.
-        String imageName= listOfFiles[0].getName();
+        String imageName = listOfFiles[0].getName();
         imageName = FilenameUtils.removeExtension(imageName);
         String userprofile = System.getenv("userprofile");
-        stitchedImage= userprofile + "\\Documents"+"\\"+imageName+"_stitch.jpg";
+        stitchedImage = userprofile + "\\Documents"+"\\"+imageName+"_stitch.jpg";
         File stitchedImageFile = new File(stitchedImage);
         File outputImages = new File(outputFolder);
         File[] listofFilesDocuments = stitchedImageFile.listFiles();
@@ -214,7 +208,6 @@ public class UserInterface {
 
 
         UAV_NDVI2 ndviObject = new UAV_NDVI2();
-        
          
 	        Mat matObject2 = ndviObject.NDVIProcessing(outputFile.getPath(), true); // error here
 	           SetText("NDVI algorithm!");
@@ -226,9 +219,8 @@ public class UserInterface {
 	        }
 	        Highgui.imwrite(stitchedImage, matObject2);
 	        SetText("Done. You can find the image in " + outputFolder);
-            System.exit(0);
 
+	        System.exit(0);
 
     }
-
 }
