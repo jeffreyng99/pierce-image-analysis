@@ -65,6 +65,10 @@ public class UAV_NDVI2 {
 						nir = blue;
 						red = red - nir;
 						calc_ndvi = (nir - red)/(nir + red);
+						/* I believe the above to be incorrect, this is be the correct way
+    						nir = blue;
+							calc_ndvi = (nir - red)/(nir + red);
+						*/
 						thresh = 0.8;
 					}
 

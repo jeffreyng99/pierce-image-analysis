@@ -221,23 +221,17 @@ public class UserInterface {
         runTime.exec("cmd.exe /c Taskkill /IM ICE.exe /F"); 
         //Run NDVI function with the stitched image with outputFolder
 
-<<<<<<< Updated upstream
         System.out.println("debug 1");
-=======
         // Creates a UAV_NDVI2 object to manipulate
->>>>>>> Stashed changes
         UAV_NDVI2 ndviObject = new UAV_NDVI2();
         System.out.println("debug 2"); //ends here
          
-<<<<<<< Updated upstream
 	        Mat matObject2 = ndviObject.NDVIProcessing(outputFile.getPath(), true); // error here
         System.out.println("debug 3");
 	           SetText("NDVI algorithm!");
-=======
         // Calls NDVIProcessing on the object 
         Mat matObject2 = ndviObject.NDVIProcessing(outputFile.getPath(), true); // error here
 	    SetText("NDVI algorithm!");
->>>>>>> Stashed changes
 	        
 	        if (matObject2 == null)
 	        {
@@ -247,14 +241,9 @@ public class UserInterface {
 	        Highgui.imwrite(stitchedImage, matObject2);//See Gitlab issue tracker
 	        SetText("Done. You can find the image in " + outputFolder);
      
-
-
-<<<<<<< Updated upstream
-=======
 	        //We do not need to exit because we need the gui to tell the user where the file is located.
             //System.exit(0);
     }
->>>>>>> Stashed changes
 
     // We have this method to check our 
     private String getFileExtension(File file) {
