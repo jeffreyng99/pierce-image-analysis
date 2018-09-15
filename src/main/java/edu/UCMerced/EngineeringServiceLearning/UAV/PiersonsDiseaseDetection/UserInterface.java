@@ -171,8 +171,6 @@ public class UserInterface {
         File inputImages = new File(inputFolder);
         File[] listOfFiles = inputImages.listFiles();
 
-        String[] allowedExtension = {""}
-
         for (int i=0; i < listOfFiles.length; i++)
         {
             if (listOfFiles[i].isFile() && (getFileExtension(listOfFiles[i]).equalsIgnoreCase("tiff") || getFileExtension(listOfFiles[i]).equalsIgnoreCase("jpeg") || getFileExtension(listOfFiles[i]).equalsIgnoreCase("jpg") || getFileExtension(listOfFiles[i]).equalsIgnoreCase("png")))
