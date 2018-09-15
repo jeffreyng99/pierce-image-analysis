@@ -80,6 +80,7 @@ public class UserInterface {
             return "Pick a folder.";
         }
     }
+
     public void SetText(String instruct){
         textPane1.setText(instruct);
     }
@@ -148,26 +149,33 @@ public class UserInterface {
     }
 
     public void thisDoesPrettyMuchEverything(String inputFolder, String outputFolder) throws IOException, InterruptedException {
-        String Instruct = "Hello";
-        String stitchedImage="";
+        String Instruct = "Hello"; 
+        String stitchedImage = "";
         //In other words, useless stuff. take code from uaveWindowed function that isn't GUI stuff.
         SetText("Microsoft ICE will now open, \n" +
                 "go through each step and click on 'Next', which can be found in the top right corner. \n" +
                 "When in step 4 click on 'Export to disk', and then click save." ); //letting user know that the program used to stitch the images will open on its own
         //Telling user to move through the the steps by clicking next in microsoft ICE
         //Telling user to export the stitched image into the default folder
+
+        // Creating a new spj file for Microsoft Ice to run.
         File file = new File("blah.spj");  //Creates a .spj file in memory
         BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-        //Writing inside the .spj file
+
+        //Writes the first three lines of the .spj file
         writer.write("<?xml version=\"1.0\" encoding =\"utf-8\"?>"); writer.newLine();
         writer.write("<stitchProject version=\"2.0\" cameraMotion=\"automatic\">"); writer.newLine();
         writer.write("<sourceImages>"); writer.newLine();
+
         //Writing the location of the images in the .spj file
         File inputImages = new File(inputFolder);
         File[] listOfFiles = inputImages.listFiles();
+
+        String[] allowedExtension = {""}
+
         for (int i=0; i < listOfFiles.length; i++)
         {
-            if (listOfFiles[i].isFile())
+            if (listOfFiles[i].isFile() && (getFileExtension(listOfFiles[i]).equalsIgnoreCase("tiff") || getFileExtension(listOfFiles[i]).equalsIgnoreCase("jpeg") || getFileExtension(listOfFiles[i]).equalsIgnoreCase("jpg") || getFileExtension(listOfFiles[i]).equalsIgnoreCase("png")))
             {
                 writer.write("<sourceImage filePath=\"" + inputFolder + "\\" + listOfFiles[i].getName() + "\" />"); writer.newLine();
             }
@@ -176,8 +184,8 @@ public class UserInterface {
         writer.write("</stitchProject>");
         writer.close();
 
-        Runtime rt = Runtime.getRuntime();
-        rt.exec("cmd.exe /c blah.spj"); //Opens ICE and then stitches the images listed in the .spj file. We would change this line if we were to stitch with another program
+        Runtime runTime = Runtime.getRuntime();
+        runTime.exec("cmd.exe /c blah.spj"); //Opens ICE and then stitches the images listed in the .spj file. We would change this line if we were to stitch with another program
         //This should open up ICE and wait for the user to start the actual stitching process. The user can press next for each step in ICE. ICE will save the stitched image
         //under the name of the first image with a _stitch added to the end. It will also save this file in the documents folder by default.
         String imageName = listOfFiles[0].getName();
@@ -209,16 +217,27 @@ public class UserInterface {
             System.out.print("Error Number Two");
         }
         SetText("Stitching Complete, now running NDVI algorithm");
-        rt.exec("cmd.exe /c Taskkill /IM ICE.exe /F"); //closes ICE
+        // Exits ICE
+        runTime.exec("cmd.exe /c Taskkill /IM ICE.exe /F"); 
         //Run NDVI function with the stitched image with outputFolder
 
+<<<<<<< Updated upstream
         System.out.println("debug 1");
+=======
+        // Creates a UAV_NDVI2 object to manipulate
+>>>>>>> Stashed changes
         UAV_NDVI2 ndviObject = new UAV_NDVI2();
         System.out.println("debug 2"); //ends here
          
+<<<<<<< Updated upstream
 	        Mat matObject2 = ndviObject.NDVIProcessing(outputFile.getPath(), true); // error here
         System.out.println("debug 3");
 	           SetText("NDVI algorithm!");
+=======
+        // Calls NDVIProcessing on the object 
+        Mat matObject2 = ndviObject.NDVIProcessing(outputFile.getPath(), true); // error here
+	    SetText("NDVI algorithm!");
+>>>>>>> Stashed changes
 	        
 	        if (matObject2 == null)
 	        {
@@ -230,7 +249,23 @@ public class UserInterface {
      
 
 
+<<<<<<< Updated upstream
+=======
+	        //We do not need to exit because we need the gui to tell the user where the file is located.
+            //System.exit(0);
+    }
+>>>>>>> Stashed changes
 
+    // We have this method to check our 
+    private String getFileExtension(File file) {
+        // getName function https://www.tutorialspoint.com/java/io/file_getname.htm
+        String name = file.getName();
+        // Gets the index of .txt and adds 1, therefore txt
+        int lastIndexOf = name.lastIndexOf(".") + 1;
+        if (lastIndexOf == -1) {
+            return ""; // empty extension
+        }
+        return name.substring(lastIndexOf);
     }
 
 }
