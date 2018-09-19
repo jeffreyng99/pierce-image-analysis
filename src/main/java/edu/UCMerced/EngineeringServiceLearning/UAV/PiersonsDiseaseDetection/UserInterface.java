@@ -227,8 +227,7 @@ public class UserInterface {
 	        Mat matObject2 = ndviObject.NDVIProcessing(outputFile.getPath(), true); // error here
         System.out.println("debug 3");
 	           SetText("NDVI algorithm!");
-        // Calls NDVIProcessing on the object 
-        Mat matObject2 = ndviObject.NDVIProcessing(outputFile.getPath(), true); // error here
+        // Calls NDVIProcessing on the object
 	    SetText("NDVI algorithm!");
 	        
 	        if (matObject2 == null)
