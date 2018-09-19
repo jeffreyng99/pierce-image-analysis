@@ -12,7 +12,7 @@
     </properties>
     <border type="bevel-raised"/>
     <children>
-      <component id="3d6ae" class="javax.swing.JTextField" binding="InputFile1">
+      <component id="3d6ae" class="javax.swing.JTextField" binding="txtInputFile">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -20,7 +20,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="ebf69" class="javax.swing.JButton" binding="OpenFileButton">
+      <component id="ebf69" class="javax.swing.JButton" binding="btnInputFile">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -28,7 +28,7 @@
           <text value="Choose Input Folder"/>
         </properties>
       </component>
-      <component id="199ad" class="javax.swing.JTextField" binding="OutputFile1">
+      <component id="199ad" class="javax.swing.JTextField" binding="txtOutputFile">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -36,7 +36,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="9a5ac" class="javax.swing.JButton" binding="OutputFileButton">
+      <component id="9a5ac" class="javax.swing.JButton" binding="btnOutputFile">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -44,7 +44,7 @@
           <text value="Choose Output Folder"/>
         </properties>
       </component>
-      <component id="a31cc" class="javax.swing.JButton" binding="Analyze">
+      <component id="a31cc" class="javax.swing.JButton" binding="btnAnalyze">
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -52,7 +52,7 @@
           <text value="Analyze"/>
         </properties>
       </component>
-      <component id="6b190" class="javax.swing.JTextPane" binding="textPane1" default-binding="true">
+      <component id="6b190" class="javax.swing.JTextPane" binding="txpError">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
