@@ -1,16 +1,14 @@
 package edu.UCMerced.EngineeringServiceLearning.UAV.PiersonsDiseaseDetection;
 
 import org.apache.commons.io.FilenameUtils;
-import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
 
 import javax.swing.*;
-import java.awt.*;
+import java.util.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.util.Set;
 
 /**
  * Created by Buraaq Alrawi on 10/11/2016.
@@ -26,8 +24,8 @@ public class UserInterface {
     private JTextField txtInputFile;
     private JTextField txtOutputFile;
 
-
     private JTextPane txpError;
+    private JSpinner spnjunkImages;
 
     public UserInterface() {
         btnInputFile.addActionListener(new ActionListener() {
@@ -166,13 +164,26 @@ public class UserInterface {
         //Writing the location of the images in the .spj file
         File inputImages = new File(inputFolder);
         File[] listOfFiles = inputImages.listFiles();
-        for (int i=0; i < listOfFiles.length; i++)
-        {
-            if (listOfFiles[i].isFile())
-            {
-                writer.write("<sourceImage filePath=\"" + inputFolder + "\\" + listOfFiles[i].getName() + "\" />"); writer.newLine();
+
+        List<String> extImages = new ArrayList<String>(); //Image extensions array (D.A.C)
+        extImages.add(".jpg");
+        extImages.add(".png");
+        extImages.add(".jpeg");
+        extImages.add(".tiff");
+
+        spnjunkImages.setValue(10);
+
+        for (int i=0; i < listOfFiles.length; i++) {
+            for (String extensions : extImages) {
+                    if (listOfFiles[i].isFile() && listOfFiles[i].getName().toLowerCase().endsWith(extensions)) {
+                       // if (listOfFiles[i].isFile() && listOfFiles[i].getName().matches("_002")) {
+                            System.out.print(listOfFiles[i].getName());
+                            writer.write("<sourceImage filePath=\"" + inputFolder + "\\" + listOfFiles[i].getName() + "\" />");
+                            writer.newLine();
+                    }
             }
         }
+
         writer.write("</sourceImages>"); writer.newLine();
         writer.write("</stitchProject>");
         writer.close();
