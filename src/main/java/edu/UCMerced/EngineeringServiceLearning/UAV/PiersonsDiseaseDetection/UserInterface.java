@@ -166,6 +166,7 @@ public class UserInterface {
         runTime.exec("cmd.exe /c " + spjFileName); //Opens ICE and then stitches the images listed in the .spj file. We would change this line if we were to stitch with another program
         //This should open up ICE and wait for the user to start the actual stitching process. The user can press next for each step in ICE. ICE will save the stitched image
         //under the name of the first image with a _stitch added to the end. It will also save this file in the documents folder by default.
+        File[] listOfFiles = inputImages.listFiles();
         String imageName = listOfFiles[0].getName();
         imageName = FilenameUtils.removeExtension(imageName);
         String userprofile = System.getenv("userprofile");
@@ -216,8 +217,7 @@ public class UserInterface {
 	            return;
 	        }
 	        Highgui.imwrite(stitchedImage, matObject2);//See Gitlab issue tracker
-	        SetText("Done. You can find the image in " + outputFolder);
-     
+	        SetText("Done. You can find the image in " + outputFolder);     
 	        //We do not need to exit because we need the gui to tell the user where the file is located.
             //System.exit(0);
     }
@@ -234,7 +234,7 @@ public class UserInterface {
         return name.substring(lastIndexOf);
     }
 
-    private void generateSPJFile(String inputFolder, String nameOfFile) {
+    private void generateSPJFile(String inputFolder, String nameOfFile) throws IOException {
         File file = new File(nameOfFile);
         BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 
