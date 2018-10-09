@@ -25,7 +25,10 @@ public class UserInterface {
     private JTextField txtOutputFile;
 
     private JTextPane txpError;
-    private JSpinner spnjunkImages;
+    private JButton button1;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JButton button2;
 
     public UserInterface() {
         btnInputFile.addActionListener(new ActionListener() {
@@ -108,6 +111,10 @@ public class UserInterface {
         {
             String fullPath = ExportResource("/opencv_java2411.dll"); // Outputs necessary .dll to use opencv library.
             System.load(fullPath);
+
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+            }
         }
         catch (Exception e)
         {
@@ -170,8 +177,6 @@ public class UserInterface {
         extImages.add(".png");
         extImages.add(".jpeg");
         extImages.add(".tiff");
-
-        spnjunkImages.setValue(10);
 
         for (int i=0; i < listOfFiles.length; i++) {
             for (String extensions : extImages) {
