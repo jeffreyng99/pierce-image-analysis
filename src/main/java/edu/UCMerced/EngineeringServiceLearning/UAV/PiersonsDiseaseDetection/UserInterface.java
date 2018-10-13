@@ -175,7 +175,7 @@ public class UserInterface {
         File[] listOfFiles = inputImages.listFiles();
         for (int i=0; i < listOfFiles.length; i++)
         {
-            if (listOfFiles[i].isFile())
+            if (listOfFiles[i].isFile() && (getFileExtension(listOfFiles[i]).equalsIgnoreCase("tiff") || getFileExtension(listOfFiles[i]).equalsIgnoreCase("jpeg") || getFileExtension(listOfFiles[i]).equalsIgnoreCase("jpg") || getFileExtension(listOfFiles[i]).equalsIgnoreCase("png")))
             {
                 writer.write("<sourceImage filePath=\"" + inputFolder + "\\" + listOfFiles[i].getName() + "\" />"); writer.newLine();
             }
@@ -231,5 +231,17 @@ public class UserInterface {
 
 	        System.exit(0);
 
+    }
+
+        // We have this method to check our 
+    private String getFileExtension(File file) {
+        // getName function https://www.tutorialspoint.com/java/io/file_getname.htm
+        String name = file.getName();
+        // Gets the index of .txt and adds 1, therefore txt
+        int lastIndexOf = name.lastIndexOf(".") + 1;
+        if (lastIndexOf == -1) {
+            return ""; // empty extension
+        }
+        return name.substring(lastIndexOf);
     }
 }
