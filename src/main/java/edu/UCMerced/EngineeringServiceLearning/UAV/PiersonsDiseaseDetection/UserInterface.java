@@ -175,7 +175,8 @@ public class UserInterface {
         File[] listOfFiles = inputImages.listFiles();
         for (int i=0; i < listOfFiles.length; i++)
         {
-            if (listOfFiles[i].isFile() && (getFileExtension(listOfFiles[i]).equalsIgnoreCase("tiff") || getFileExtension(listOfFiles[i]).equalsIgnoreCase("jpeg") || getFileExtension(listOfFiles[i]).equalsIgnoreCase("jpg") || getFileExtension(listOfFiles[i]).equalsIgnoreCase("png")))
+        	//System.out.println(listOfFiles[i].getName().charAt(0));
+            if (listOfFiles[i].isFile() && (listOfFiles[i].getName().charAt(0) != '.') && (getFileExtension(listOfFiles[i]).equalsIgnoreCase("tiff") || getFileExtension(listOfFiles[i]).equalsIgnoreCase("jpeg") || getFileExtension(listOfFiles[i]).equalsIgnoreCase("jpg") || getFileExtension(listOfFiles[i]).equalsIgnoreCase("png")))
             {
                 writer.write("<sourceImage filePath=\"" + inputFolder + "\\" + listOfFiles[i].getName() + "\" />"); writer.newLine();
             }
