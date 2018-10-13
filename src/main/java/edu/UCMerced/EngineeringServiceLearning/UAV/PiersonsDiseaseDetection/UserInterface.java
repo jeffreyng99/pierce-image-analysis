@@ -97,6 +97,15 @@ public class UserInterface {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("UserInterface");
+	//Look and feel documents: http://programmerts.blogspot.com/2016/03/windows-look-and-feel-for-jfilechooser.html
+		try {
+	    	for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+               	UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		//UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            }
+		}
+		catch(Exception e) {}
+
         frame.setContentPane(new UserInterface().Jpanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
