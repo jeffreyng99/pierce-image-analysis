@@ -173,11 +173,19 @@ public class UserInterface {
         //Writing the location of the images in the .spj file
         File inputImages = new File(inputFolder);
         File[] listOfFiles = inputImages.listFiles();
+
+        // Hotfix made by Jeffrey.
+        int size = listOfFiles.length;
+        File[] tempListOfFiles = new File[size];
+        int j = 0;
+
         for (int i=0; i < listOfFiles.length; i++)
         {
         	//System.out.println(listOfFiles[i].getName().charAt(0));
             if (listOfFiles[i].isFile() && (listOfFiles[i].getName().charAt(0) != '.') && (getFileExtension(listOfFiles[i]).equalsIgnoreCase("tiff") || getFileExtension(listOfFiles[i]).equalsIgnoreCase("jpeg") || getFileExtension(listOfFiles[i]).equalsIgnoreCase("jpg") || getFileExtension(listOfFiles[i]).equalsIgnoreCase("png")))
             {
+                tempListOfFiles[j] = listOfFiles[i];
+                j++;
                 writer.write("<sourceImage filePath=\"" + inputFolder + "\\" + listOfFiles[i].getName() + "\" />"); writer.newLine();
             }
         }
@@ -189,7 +197,7 @@ public class UserInterface {
         rt.exec("cmd.exe /c blah.spj"); //Opens ICE and then stitches the images listed in the .spj file. We would change this line if we were to stitch with another program
         //This should open up ICE and wait for the user to start the actual stitching process. The user can press next for each step in ICE. ICE will save the stitched image
         //under the name of the first image with a _stitch added to the end. It will also save this file in the documents folder by default.
-        String imageName = listOfFiles[0].getName();
+        String imageName = tempListOfFiles[0].getName();
         imageName = FilenameUtils.removeExtension(imageName);
         String userprofile = System.getenv("userprofile");
         stitchedImage = userprofile + "\\Documents"+"\\"+imageName+"_stitch.jpg";
