@@ -9,7 +9,7 @@ import java.io.*;
 
 public class UAV_NDVI2 {
 
-	public Mat NDVIProcessing(String inputImagePath,boolean isRedFilter) {
+	public Mat NDVIProcessing(String inputImagePath, boolean isRedFilter) {
 
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME); //this is needed to remove an unsatisfied link error
 		System.out.println(System.getProperty("user.dir"));
@@ -96,7 +96,26 @@ public class UAV_NDVI2 {
 			Highgui.imwrite(imagepath_out, yellow_vin);
 			System.out.println("Done!");
 			*/
+	}
 
+	public Mat dualNDVIProcessing(String NIRInputImagePath, String secondInputImagePath, boolean isRedFilter) {
+
+		System.loadLibrary(Core.NATIVE_LIBRARY_NAME); //this is needed to remove an unsatisfied link error
+		System.out.println(System.getProperty("user.dir"));
+		Mat firstInputImageMatrix;
+		Mat secondInputImageMatrix;
+
+		try{
+			firstInputImageMatrix = Highgui.imread(firstInputImagePath);
+		} catch (Exception e) {
+			return null;
+		}
+		try{
+			secondInputImageMatrix = Highgui.imread(secondInputImagePath);
+		} catch (Exception e) {
+			return null;
+		}
 
 	}
+
 }
