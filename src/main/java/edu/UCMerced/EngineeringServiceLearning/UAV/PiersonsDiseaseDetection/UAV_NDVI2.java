@@ -58,6 +58,7 @@ public class UAV_NDVI2 {
 						nir = red;
 						blue = blue - red;
 						calc_ndvi = (nir - blue)/(nir + blue);
+						System.out.println(calc_ndvi);
 						thresh = 0.8;
 					}
 
@@ -77,6 +78,8 @@ public class UAV_NDVI2 {
 					//double[] out_ndvi = {green, red, nir};
 					//double[] out_ndvi = {255*(1+calc_ndvi)/2, green, nir};
 					//double[] out_ndvi = {blue_ndvi, nir, red_ndvi};
+					//ndvi.put(i, j, out_ndvi); //coloring pixel to NDVI scale based on calculation
+					double[] out_ndvi = {0, 0, 0}; 
 					ndvi.put(i, j, out_ndvi); //coloring pixel to NDVI scale based on calculation
 					ndvi2.put(i,j, 255*(calc_ndvi+1)/2);
 
