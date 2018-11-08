@@ -9,6 +9,26 @@ import java.io.*;
 
 public class UAV_NDVI2 {
 
+	public int[] assignColor(double value) {
+		int[] bgr;
+		if (value < .30) { bgr = {0, 0, 0}; }
+		else if (value >= .30 && value < .35) { bgr = {41, 29, 165}; }
+		else if (value >= .35 && value < .40) { bgr = {39, 46, 217}; }
+		else if (value >= .40 && value < .45) { bgr = {68, 109, 242}; }
+		else if (value >= .45 && value < .50) { bgr = {98, 174, 250}; }
+		else if (value >= .50 && value < .55) { bgr = {192, 247, 250}; }
+		else if (value >= .55 && value < .60) { bgr = {141, 230, 220}; }
+		else if (value >= .60 && value < .65) { bgr = {106, 211, 106}; }
+		else if (value >= .65 && value < .70) { bgr = {72, 183, 77}; }
+		else if (value >= .70 && value < .75) { bgr = {75, 179, 42}; }
+		else if (value >= .75 && value < .80) { bgr = {80, 152, 28}; }
+		else if (value >= .80 && value < .85) { bgr = {76, 139, 13}; }
+		else if (value >= .85 && value < .90) { bgr = {57, 104, 18}; }
+		else if (value >= .90 && value < 1) { bgr = {255, 255, 255}; }			
+		
+		return bgr;
+	}
+
 	public Mat NDVIProcessing(String inputImagePath, boolean isRedFilter) {
 
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME); //this is needed to remove an unsatisfied link error
@@ -74,12 +94,12 @@ public class UAV_NDVI2 {
 					else if(calc_ndvi > 0){
 						green_ndvi = 255*(1-calc_ndvi);   //negative value 
 					}
-					double[] out_ndvi = {blue_ndvi, red_ndvi, green_ndvi};      //original blue green red
+					//double[] out_ndvi = {blue_ndvi, red_ndvi, green_ndvi};      //original blue green red
 					//double[] out_ndvi = {green, red, nir};
 					//double[] out_ndvi = {255*(1+calc_ndvi)/2, green, nir};
 					//double[] out_ndvi = {blue_ndvi, nir, red_ndvi};
 					//ndvi.put(i, j, out_ndvi); //coloring pixel to NDVI scale based on calculation
-					double[] out_ndvi = {0, 0, 0}; 
+					double[] out_ndvi = assignColor(calc_ndvi); 
 					ndvi.put(i, j, out_ndvi); //coloring pixel to NDVI scale based on calculation
 					ndvi2.put(i,j, 255*(calc_ndvi+1)/2);
 
@@ -101,7 +121,7 @@ public class UAV_NDVI2 {
 			*/
 	}
 
-	public Mat dualNDVIProcessing(String NIRInputImagePath, String secondInputImagePath, boolean isRedFilter) {
+	/*public Mat dualNDVIProcessing(String NIRInputImagePath, String secondInputImagePath, boolean isRedFilter) {
 
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME); //this is needed to remove an unsatisfied link error
 		System.out.println(System.getProperty("user.dir"));
@@ -119,6 +139,6 @@ public class UAV_NDVI2 {
 			return null;
 		}
 
-	}
+	}*/
 
 }
