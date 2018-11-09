@@ -9,23 +9,23 @@ import java.io.*;
 
 public class UAV_NDVI2 {
 
-	public int[] assignColor(double value) {
-		int[] bgr;
-		if (value < .30) { bgr = {0, 0, 0}; }
-		else if (value >= .30 && value < .35) { bgr = {41, 29, 165}; }
-		else if (value >= .35 && value < .40) { bgr = {39, 46, 217}; }
-		else if (value >= .40 && value < .45) { bgr = {68, 109, 242}; }
-		else if (value >= .45 && value < .50) { bgr = {98, 174, 250}; }
-		else if (value >= .50 && value < .55) { bgr = {192, 247, 250}; }
-		else if (value >= .55 && value < .60) { bgr = {141, 230, 220}; }
-		else if (value >= .60 && value < .65) { bgr = {106, 211, 106}; }
-		else if (value >= .65 && value < .70) { bgr = {72, 183, 77}; }
-		else if (value >= .70 && value < .75) { bgr = {75, 179, 42}; }
-		else if (value >= .75 && value < .80) { bgr = {80, 152, 28}; }
-		else if (value >= .80 && value < .85) { bgr = {76, 139, 13}; }
-		else if (value >= .85 && value < .90) { bgr = {57, 104, 18}; }
-		else if (value >= .90 && value < 1) { bgr = {255, 255, 255}; }			
-		
+	public double[] assignColor(double value) {
+		double[] bgr = new double[3];
+		if (value < .30D) { bgr[0] = 0; bgr[1] = 0; bgr[2] = 0; }
+		else if (value >= .30D && value < .35D) { bgr[0] = 41; bgr[1] = 29; bgr[2] = 165; }
+		else if (value >= .35D && value < .40D) { bgr[0] = 39; bgr[1] = 46; bgr[2] = 217; }
+		else if (value >= .40D && value < .45D) { bgr[0] = 68; bgr[1] = 109; bgr[2] = 242; }
+		else if (value >= .45D && value < .50D) { bgr[0] = 98; bgr[1] = 174; bgr[2] = 250; }
+		else if (value >= .50D && value < .55D) { bgr[0] = 192; bgr[1] = 247; bgr[2] = 250; }
+		else if (value >= .55D && value < .60D) { bgr[0] = 141; bgr[1] = 230; bgr[2] = 220; }
+		else if (value >= .60D && value < .65D) { bgr[0] = 106; bgr[1] = 211; bgr[2] = 106; }
+		else if (value >= .65D && value < .70D) { bgr[0] = 72; bgr[1] = 183; bgr[2] = 77; }
+		else if (value >= .70D && value < .75D) { bgr[0] = 75; bgr[1] = 179; bgr[2] = 42; }
+		else if (value >= .75D && value < .80D) { bgr[0] = 80; bgr[1] = 152; bgr[2] = 28; }
+		else if (value >= .80D && value < .85D) { bgr[0] = 76; bgr[1] = 139; bgr[2] = 13; }
+		else if (value >= .85D && value < .90D) { bgr[0] = 57; bgr[1] = 104; bgr[2] = 18; }
+		else if (value >= .90D && value < 1D) { bgr[0] = 255; bgr[1] = 255; bgr[2] = 255; }			
+
 		return bgr;
 	}
 
