@@ -24,7 +24,7 @@ public class TestAnalyzing {
         Mat greyMat = source;
         Mat ndviMat = source.clone();
 
-        Imgproc.cvtColor(source, greyMat, Imgproc.COLOR_BGR2RGB);
+        Imgproc.cvtColor(greyMat, greyMat, Imgproc.COLOR_BGR2RGB);
         Imgproc.cvtColor(greyMat, greyMat, Imgproc.COLOR_RGB2GRAY);
 
 
@@ -40,11 +40,12 @@ public class TestAnalyzing {
                 double red = data[2]; // Red band
 
                 //double ndviCalc = ((blue - red) / (blue + red));
-                double ndviCalc = ((blue - red) / (blue + red)); //HAD CHANGED TO
+                double ndviCalc = ((blue - red) / (blue + red) * 100 + 100); //HAD CHANGED TO
+
+                double greenCalc;
+                double redCalc;
 
                 double ndviOutPut = ndviCalc;
-                System.out.println(i + "/" + j  + ":  " + ndviCalc);
-
                 //  System.out.println(ndviOutPut);
 
                 double[] ndviOut = {ndviCalc};
@@ -54,13 +55,12 @@ public class TestAnalyzing {
         }
 
         System.out.println(greyMat.channels() + " Channels");
-        Imgproc.equalizeHist(source, greyMat);
+        Imgproc.equalizeHist(greyMat, greyMat);
 
+        Imgproc.applyColorMap(ndviMat, ndviMat, 2);
+//        Imgproc.applyColorMap(greyMat, ndviMat, Imgproc.COLORMAP_HOT);
 
-
-//        Imgproc.applyColorMap(source, ndviMat, Imgproc.COLORMAP_JET);
-
-        Imgcodecs.imwrite("C:\\Users\\senio\\Pictures\\Saved Pictures\\test.tif", greyMat);
+        Imgcodecs.imwrite("C:\\Users\\senio\\Pictures\\Saved Pictures\\test.tif", ndviMat);
     }
 
 }
