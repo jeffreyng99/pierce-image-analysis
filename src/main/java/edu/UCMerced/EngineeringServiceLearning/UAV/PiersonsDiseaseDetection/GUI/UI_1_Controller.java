@@ -30,7 +30,7 @@ public class UI_1_Controller implements Initializable {
     private TextField txtOutputFile;
 
     public void initialize(URL url, ResourceBundle rb) {
-        // loadUI("UI_3.fxml");
+        //Nothing
     }
 
     @FXML

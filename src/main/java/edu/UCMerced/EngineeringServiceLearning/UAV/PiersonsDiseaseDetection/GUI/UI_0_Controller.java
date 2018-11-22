@@ -26,7 +26,7 @@ public class UI_0_Controller implements Initializable {
     private TextField txtInputFile;
 
     public void initialize(URL url, ResourceBundle rb) {
-        // loadUI("UI_3.fxml");
+        //Nothing
     }
 
     @FXML
