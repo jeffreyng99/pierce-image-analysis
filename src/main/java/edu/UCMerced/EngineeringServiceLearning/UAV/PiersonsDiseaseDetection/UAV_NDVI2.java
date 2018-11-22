@@ -2,7 +2,7 @@ package edu.UCMerced.EngineeringServiceLearning.UAV.PiersonsDiseaseDetection;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
-import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.highgui.Highgui;
 import org.opencv.imgproc.Imgproc;
 
 public class UAV_NDVI2 extends Thread {
@@ -114,7 +114,7 @@ public class UAV_NDVI2 extends Thread {
 
         try {
 
-            inputImageMatrix = Imgcodecs.imread(inputImagePath);
+            inputImageMatrix = Highgui.imread(inputImagePath);
 
         } catch (Exception e) {
             return null;

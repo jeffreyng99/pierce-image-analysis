@@ -6,7 +6,7 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import org.opencv.core.Mat;
-import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.highgui.Highgui;
 
 import java.io.File;
 import java.io.IOException;
@@ -47,7 +47,7 @@ public class ImageAnalyzing {
                 if (matObject2 == null) {
                     return null;
                 }
-                Imgcodecs.imwrite(outputFile.getPath(), matObject2);
+                Highgui.imwrite(outputFile.getPath(), matObject2);
 
                 return null;
             }

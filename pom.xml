@@ -17,60 +17,62 @@
     <build>
         <!-- Name of _unshaded_ jar (i.e. the jar to not use/ignore). See finalName tag specified in maven-shade-plugin -->
         <finalName>IgnoreThis</finalName>
-            <plugins>
-                <!-- Required to compile IntelliJ-created GUI
-                http://stackoverflow.com/questions/19049253/intelij-idea-gui-designer-maven -->
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>ideauidesigner-maven-plugin</artifactId>
-                    <version>1.0-beta-1</version>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>javac2</goal>
-                            </goals>
-                        </execution>
-                    </executions>
+        <plugins>
+            <!-- Required to compile IntelliJ-created GUI
+            http://stackoverflow.com/questions/19049253/intelij-idea-gui-designer-maven -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>ideauidesigner-maven-plugin</artifactId>
+                <version>1.0-beta-1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>javac2</goal>
+                        </goals>
+                    </execution>
+                </executions>
 
-                    <configuration>
-                        <fork>true</fork>
-                        <debug>true</debug>
-                        <failOnError>true</failOnError>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <!-- Build an executable JAR -->
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.4</version>
-                    <configuration>
-                        <archive>
-                            <manifest>
-                                <addClasspath>true</addClasspath>
-                                <classpathPrefix>lib/</classpathPrefix>
-                                <mainClass>edu.UCMerced.EngineeringServiceLearning.UAV.PiersonsDiseaseDetection.UserInterface</mainClass>
-                            </manifest>
-                        </archive>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-shade-plugin</artifactId>
-                    <executions>
-                        <execution>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>shade</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <!-- Final name of jar specified here, since unshaded variant can't be deleted, only renamed automatically -->
-                        <finalName>isnap</finalName>
-                        <createDependencyReducedPom>false</createDependencyReducedPom> 
-                    </configuration>
-                </plugin>
-            </plugins>
+                <configuration>
+                    <fork>true</fork>
+                    <debug>true</debug>
+                    <failOnError>true</failOnError>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!-- Build an executable JAR -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>
+                                edu.UCMerced.EngineeringServiceLearning.UAV.PiersonsDiseaseDetection.GUI.GUI_Interface
+                            </mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- Final name of jar specified here, since unshaded variant can't be deleted, only renamed automatically -->
+                    <finalName>isnap</finalName>
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
     <dependencies>
         <dependency>
@@ -90,6 +92,11 @@
             <groupId>com.intellij</groupId>
             <artifactId>forms_rt</artifactId>
             <version>7.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>de.jensd</groupId>
+            <artifactId>fontawesomefx</artifactId>
+            <version>8.9</version>
         </dependency>
     </dependencies>
 
