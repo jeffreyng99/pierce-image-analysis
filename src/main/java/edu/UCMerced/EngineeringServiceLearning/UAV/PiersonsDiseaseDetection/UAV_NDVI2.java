@@ -180,7 +180,7 @@ public class UAV_NDVI2 extends Thread {
         System.out.println(low);
         System.out.println("done");
         //Mat dist;
-        Imgproc.equalizeHist(greyMat, greyMat);
+        //Imgproc.equalizeHist(greyMat, greyMat);
         high = 50;
         low = 50;
 
